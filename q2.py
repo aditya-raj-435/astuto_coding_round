@@ -64,8 +64,13 @@ def compressed_stack_length(lst):
         >>> compressed_stack_length([])
         0
     """
-    # TODO: Implement your solution here
-    pass
+    stack = []
+    for num in range(len(lst)):
+        if stack and stack[-1] == lst[num]:
+            stack.pop()
+        else:
+            stack.append(lst[num])
+    return len(stack)
 
 
 if __name__ == "__main__":

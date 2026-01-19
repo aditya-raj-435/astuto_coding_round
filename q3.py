@@ -66,9 +66,20 @@ def find_overloaded_users(events):
         >>> find_overloaded_users([(1, 1), (1, 20), (1, 40)])
         set()
     """
-    # TODO: Implement your solution here
-    pass
-
+    from collections import defaultdict
+    users = defaultdict(list)
+    for user_id, timestamp in events:
+        users[user_id].append(timestamp)
+    overloaded_users = set()
+    for user_id, block in users.items():     
+        block.sort()
+        n = len(block)
+        for i in range(n - 2):
+            if block[i] - block[i-2] < 10:
+                overloaded_users.add(user_id)
+                break
+    return overloaded_users
+  
 
 if __name__ == "__main__":
     # Test your solution here

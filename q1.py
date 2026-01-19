@@ -51,8 +51,20 @@ def first_stable_character(s):
         >>> first_stable_character("a")
         None
     """
-    # TODO: Implement your solution here
-    pass
+    n = len(s)
+    i = 0
+
+    while i < n:
+        char = s[i]
+        low = i
+        while i < n and s[i] == char:
+            i += 1
+        length = i - low
+        if length >= 2:
+            return char
+    return None
+    
+
 
 
 if __name__ == "__main__":
